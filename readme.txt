@@ -63,7 +63,7 @@ For each functionality of the service is present a different file in the package
 - CommandLineTest.java -> Test cases for drawing a line command.
 - CommandRectangleTest.java -> Test cases for drawing a rectangle command.
 
-Unit tests are divided in three categories
+Unit tests are divided in three categories:
 - Happy Paths, testHP_nomeTest wich are the tests that have to succeed. Usually we assert at the end of the method what we are expecting.
 - Case Limit, testCL_nomeTest wich are the tests that test a Limit Case. Example, x, y are 0 or same as width/height.  Usually we assert what we are expecting or pay attention of eventual exceptions.
 - Exceptions  - testEX_nomeTest wich are the tests that test exception cases. In this case we define the exception we are waiting to be thrown.
