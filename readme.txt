@@ -1,13 +1,13 @@
 Index
 1.	Specific
-2.  Application overview
+2.	Application overview
 4.	Source packages
 5.	Test packages
-5.  Test the application
+5.	Test the application
 6.	Timing
 
 
-1. Specific
+1) Specific
 
 Develop a simple "Connect-4" game web service running either as a WAR in jetty or
 as an embedded-jetty application, which is able to start a game session, take player
@@ -15,62 +15,56 @@ input, keep the state of the game and forward the correct response to the reques
 party.
 
 
-2. Application overview
+2) Application overview
 
 From a high level we can see the application subdivided in 4 "components":
 
-	1. The Game Implementation - Classes inside canvas package. Almost didn't touch the actual implementation of the game. 
-								So we need to convert InputDTOs to CommandCanvas for calling the Canvas.
-	2. Business Logic Layer
-		- Data Access. H2 database, EntityManager and the DAO package for accessing the data to the DB. 
-		  In this layer we convert Enity objects to DTOs so the application in the higher layers can speak only "DTO language"
-		- Service layer. The layer which first handles game logic (using canvas package) then handles the persistence of data in the DB (using dao package)
-		  This is the transactional layer. Transactions are configured in the file spring-context.xml using AOP.
-	3. WebService / REST Layer. The classes responsible for exposing the code as  RESTFul WebService. We decided to reply XML message.
-	4. Api of the application. Requests/Responses/DTOs to reply to the caller.
+1. The Game Implementation - Classes inside canvas package. Almost didn't touch the actual implementation of the game. So we need to convert InputDTOs to CommandCanvas for calling the Canvas.
+2. Business Logic Layer
+	- Data Access. H2 database, EntityManager and the DAO package for accessing the data to the DB. In this layer we convert Enity objects to DTOs so the application in the higher layers can speak only "DTO language".
+	- Service layer. The layer which first handles game logic (using canvas package) then handles 
+	the persistence of data in the DB (using dao package). This is the transactional layer. Transactions are configured in the file spring-context.xml using AOP.
+3. WebService / REST Layer. The classes responsible for exposing the code as  RESTFul WebService. We decided to reply XML message.
+4. Api of the application. Requests/Responses/DTOs to reply to the caller.
 
 
-3. Source Packages
+3) Source Packages
 
 The application is composed by the following packages:
 
-	com.ea.connect4.api         - API of the application. Here we have all the DTOs to communicate with the caller.      
-	com.ea.connect4.canvas.cmd  - Commands of the game
-	com.ea.connect4.canvas.core - Implementation fo the game
-	com.ea.connect4.canvas.exception - Exceptions of the game
-	com.ea.connect4.canvas.util      - Utilities used for the game
-	com.ea.connect4.dao      - Dao interface
-	com.ea.connect4.dao.impl - DAO implementation. If we change DB, this is the only class we have to change.
-	com.ea.connect4.entity   - Entities to persist in DB
-	com.ea.connect4.service  - Service interface
-	com.ea.connect4.service.impl - Service implementation
-	com.ea.connect4.ws - Jetty Server
-	com.ea.connect4.ws.rest - Requests handler classes
+com.ea.connect4.api         - API of the application. Here we have all the DTOs to communicate with the caller.      
+com.ea.connect4.canvas.cmd  - Commands of the game
+com.ea.connect4.canvas.core - Implementation fo the game
+com.ea.connect4.canvas.exception - Exceptions of the game
+com.ea.connect4.canvas.util      - Utilities used for the game
+com.ea.connect4.dao      - Dao interface
+com.ea.connect4.dao.impl - DAO implementation. If we change DB, this is the only class we have to change.
+com.ea.connect4.entity   - Entities to persist in DB
+com.ea.connect4.service  - Service interface
+com.ea.connect4.service.impl - Service implementation
+com.ea.connect4.ws - Jetty Server
+com.ea.connect4.ws.rest - Requests handler classes
 	
 
 Enhancements
-	• Exception - Enrich Connect4 Application exceptions and identify the exceptions that application must rollback when occour.
-				  In service layer actually all the operations go in commit since CanvasExcpetion extends RuntimeException 
-				  and is not set to rollback.
-				- Enrich RESTFullException in order to reply to the caller all stacktrace
-	• CurrentSession - Actually current session is simulated calling the application with the same user (can be session id or anything to identify a session)
-					   In a real application I would use spring-security and authentication for a user to log-in and then use the application.
-					   
+1.Exception - Enrich Connect4 Application exceptions and identify the exceptions that application must rollback when occour. In service layer actually all the operations go in commit since CanvasExcpetion extends RuntimeException and is not set to rollback.
+			- Enrich RESTFullException in order to reply to the caller all stacktrace
+2.CurrentSession - Actually current session is simulated calling the application with the same user (can be session id or anything to identify a session) In a real application I would use spring-security and authentication for a user to log-in and then use the application.
 
-4. Test packages
+
+4) Test packages
 
 Used junit for testing Canvas Service. "TDD" approach was followed for the implementation, 
 so unit tests were not created at the end but during all the development phase.
 For each functionality of the service is present a different file in the package com.ea.connect4.be.service:
-•	CommandBucketFillTest.java -> Test cases for BucketFiller command.
-•	CommandLineTest.java -> Test cases for drawing a line command.
-•	CommandRectangleTest.java -> Test cases for drawing a rectangle command.
+- CommandBucketFillTest.java -> Test cases for BucketFiller command.
+- CommandLineTest.java -> Test cases for drawing a line command.
+- CommandRectangleTest.java -> Test cases for drawing a rectangle command.
 
 Unit tests are divided in three categories
-	• Happy Paths - testHP_nomeTest wich are the tests that have to succeed. Usually we assert at the end of the method what we are expecting
-	• Case Limit  - testCL_nomeTest wich are the tests that test a Limit Case. Example, x, y are 0 or same as width/height. 
-					Usually we assert what we are expecting or pay attention of eventual exceptions
-	• Exceptions  - testEX_nomeTest wich are the tests that test exception cases. In this case we define the exception we are waiting to be thrown.
+- Happy Paths - testHP_nomeTest wich are the tests that have to succeed. Usually we assert at the end of the method what we are expecting
+- Case Limit  - testCL_nomeTest wich are the tests that test a Limit Case. Example, x, y are 0 or same as width/height.  Usually we assert what we are expecting or pay attention of eventual exceptions
+- Exceptions  - testEX_nomeTest wich are the tests that test exception cases. In this case we define the exception we are waiting to be thrown.
 
 Inside soapui folder there is a soapui project with the rest calls to test the application.
 	
