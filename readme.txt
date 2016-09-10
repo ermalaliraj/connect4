@@ -47,9 +47,11 @@ com.ea.connect4.ws.rest - Requests handler classes
 	
 
 Enhancements
-1.Exception - Enrich Connect4 Application exceptions and identify the exceptions that application must rollback when occour. In service layer actually all the operations go in commit since CanvasExcpetion extends RuntimeException and is not set to rollback.
-			- Enrich RESTFullException in order to reply to the caller all stacktrace
-2.CurrentSession - Actually current session is simulated calling the application with the same user (can be session id or anything to identify a session) In a real application I would use spring-security and authentication for a user to log-in and then use the application.
+1.Exception 
+	- Enrich Connect4 Application exceptions and identify the exceptions that application must rollback when occour. In service layer actually all the operations go in commit since CanvasExcpetion extends RuntimeException and is not set to rollback.
+	- Enrich RESTFullException in order to reply to the caller all stacktrace
+2.CurrentSession 
+	- Actually current session is simulated calling the application with the same user (can be session id or anything to identify a session) In a real application I would use spring-security and authentication for a user to log-in and then use the application.
 
 
 4) Test packages
