@@ -30,7 +30,6 @@ public class CanvasServiceImpl implements CanvasService {
 	@Autowired
 	private CanvasDAO canvasDAO;
 
-	@Override
 	public CanvasDTO newCanvas(NewCanvasInputDTO in) throws CanvasException {
 		Canvas canvas = new CanvasImpl(in.getWidth(), in.getHeight());
 		CanvasDTO dto = canvas.getCanvasStateAsDTO();
@@ -46,7 +45,6 @@ public class CanvasServiceImpl implements CanvasService {
 	 * 3. Persist the new state of the canvas
 	 * 4. return the new state of the canvas
 	 */
-	@Override
 	public CanvasDTO insertLine(InsertLineInputDTO in) throws CanvasException {
 		// 1. GET GAME - read last saved canvas for the specific user
 		String userId = in.getUserId();
@@ -68,7 +66,6 @@ public class CanvasServiceImpl implements CanvasService {
 		}
 	}
 	
-	@Override
 	public CanvasDTO insertRectangle(InsertRectangleInputDTO in) throws CanvasException {
 		// 1. GET GAME - read last saved canvas for the specific user
 		String userId = in.getUserId();
@@ -90,7 +87,6 @@ public class CanvasServiceImpl implements CanvasService {
 		}
 	}
 
-	@Override
 	public CanvasDTO fillArea(FillBucketInputDTO in) throws CanvasException {
 		// 1. GET GAME - read last saved canvas for the specific user
 		String userId = in.getUserId();
@@ -116,17 +112,14 @@ public class CanvasServiceImpl implements CanvasService {
 		canvasDAO.deleteCanvasByUserId(userId);
 	}
 
-	@Override
 	public CanvasDTO getCanvasById(Integer id) throws CanvasException {
 		return canvasDAO.getCanvasById(id);
 	}
 	
-	@Override
 	public CanvasDTO getCanvasByUserId(String userId) throws CanvasException {
 		return canvasDAO.getCanvasByUserId(userId);
 	}
 	
-	@Override
 	public List<CanvasDTO> getAllCanvas() throws CanvasException {
 		return canvasDAO.getAllCanvas();
 	}

@@ -23,7 +23,6 @@ public class CanvasDAOImpl extends GenericDAO implements CanvasDAO {
 	
 	protected static final transient Log logger = LogFactory.getLog(CanvasDAOImpl.class);
 	
-	@Override
 	public void newCanvas(CanvasDTO dto) throws CanvasException {
 		try {
 			CanvasEntity e = new CanvasEntity();
@@ -47,7 +46,6 @@ public class CanvasDAOImpl extends GenericDAO implements CanvasDAO {
 		}
 	}
 	
-	@Override
 	public void updateCanvas(CanvasDTO dto) throws CanvasException {
 		try{
 			CanvasEntity e = new CanvasEntity();
@@ -63,7 +61,6 @@ public class CanvasDAOImpl extends GenericDAO implements CanvasDAO {
 		}
 	}
 	
-	@Override
 	public void deleteCanvasByUserId(String userId) throws CanvasException {
 		try {
 			String sql = QueryCatalog.getQuery_deleteCanvasByUserId(userId);
@@ -76,7 +73,6 @@ public class CanvasDAOImpl extends GenericDAO implements CanvasDAO {
 		}
 	}
 	
-	@Override
 	public CanvasDTO getCanvasById(Integer id) throws CanvasException {
 		try{
 			CanvasEntity e = new CanvasEntity();
@@ -98,7 +94,6 @@ public class CanvasDAOImpl extends GenericDAO implements CanvasDAO {
 		}
 	}
 	
-	@Override
 	public CanvasDTO getCanvasByUserId(String userId) throws CanvasException {
 		CanvasDTO dto = null;
 		
@@ -124,7 +119,6 @@ public class CanvasDAOImpl extends GenericDAO implements CanvasDAO {
 		return dto;
 	}
 
-	@Override
 	public List<CanvasDTO> getAllCanvas() throws CanvasException {
 		try{ 
 			String sql = QueryCatalog.getQuery_getAllCanvas();
