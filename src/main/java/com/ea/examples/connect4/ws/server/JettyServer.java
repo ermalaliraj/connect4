@@ -14,7 +14,7 @@ public class JettyServer {
 	public static void main(String[] args) throws Exception {
 		ServletHolder sh = new ServletHolder(ServletContainer.class);
 		sh.setInitParameter("com.sun.jersey.config.property.resourceConfigClass", "com.sun.jersey.api.core.PackagesResourceConfig");
-		sh.setInitParameter("com.sun.jersey.config.property.packages", "com.ea.connect4.ws.rest");
+		sh.setInitParameter("com.sun.jersey.config.property.packages", "com.ea.examples.connect4.ws.rest");
 		sh.setInitParameter("com.sun.jersey.api.json.POJOMappingFeature", "true");
 
 		final ServletContextHandler context = new ServletContextHandler ();          
