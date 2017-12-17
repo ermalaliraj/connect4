@@ -13,13 +13,13 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.ea.connect4.api.CanvasDTO;
-import com.ea.connect4.api.InsertLineInputDTO;
-import com.ea.connect4.api.NewCanvasInputDTO;
-import com.ea.connect4.canvas.exception.CanvasException;
-import com.ea.connect4.canvas.exception.CommandNotYetImplementedException;
-import com.ea.connect4.canvas.exception.CommandWrongParamsException;
-import com.ea.connect4.service.CanvasService;
+import com.ea.examples.canvas.exception.CanvasException;
+import com.ea.examples.canvas.exception.CommandNotYetImplementedException;
+import com.ea.examples.canvas.exception.CommandWrongParamsException;
+import com.ea.examples.connect4.api.CanvasDTO;
+import com.ea.examples.connect4.api.InsertLineInputDTO;
+import com.ea.examples.connect4.api.NewCanvasInputDTO;
+import com.ea.examples.connect4.service.CanvasService;
 
 public class CommandLineTest extends AbstractSpringTest {
 

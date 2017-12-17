@@ -7,13 +7,13 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.ea.connect4.api.CanvasDTO;
-import com.ea.connect4.api.FillBucketInputDTO;
-import com.ea.connect4.api.InsertRectangleInputDTO;
-import com.ea.connect4.api.NewCanvasInputDTO;
-import com.ea.connect4.canvas.exception.CanvasException;
-import com.ea.connect4.canvas.exception.CommandWrongParamsException;
-import com.ea.connect4.service.CanvasService;
+import com.ea.examples.canvas.exception.CanvasException;
+import com.ea.examples.canvas.exception.CommandWrongParamsException;
+import com.ea.examples.connect4.api.CanvasDTO;
+import com.ea.examples.connect4.api.FillBucketInputDTO;
+import com.ea.examples.connect4.api.InsertRectangleInputDTO;
+import com.ea.examples.connect4.api.NewCanvasInputDTO;
+import com.ea.examples.connect4.service.CanvasService;
 
 /**
  * Class to test the BucketFiller Command. 
@@ -29,7 +29,7 @@ import com.ea.connect4.service.CanvasService;
  * @author Ermal Aliraj
  *
  */
-public class CommandFillTest extends AbstractSpringTest{
+public class CommandFillTest extends AbstractSpringTest {
 
 	protected static final transient Log logger = LogFactory.getLog(CommandFillTest.class);
 	public final static String COLOR = "o";

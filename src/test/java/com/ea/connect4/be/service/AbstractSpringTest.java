@@ -8,10 +8,10 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.ea.connect4.api.CanvasDTO;
-import com.ea.connect4.canvas.exception.CanvasException;
-import com.ea.connect4.canvas.exception.NoCanvasException;
-import com.ea.connect4.canvas.util.CanvasCostant;
+import com.ea.examples.canvas.exception.CanvasException;
+import com.ea.examples.canvas.exception.NoCanvasException;
+import com.ea.examples.canvas.util.CanvasCostant;
+import com.ea.examples.connect4.api.CanvasDTO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring-context.xml" })

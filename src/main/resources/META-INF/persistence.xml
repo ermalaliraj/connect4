@@ -7,7 +7,7 @@
 		
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 	
-		<class>com.ea.connect4.entity.CanvasEntity</class>
+		<class>com.ea.examples.connect4.entity.CanvasEntity</class>
 				
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
