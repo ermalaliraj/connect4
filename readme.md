@@ -116,7 +116,7 @@ Total time spend for the release 20 hours subdivided as follows:
 	
 	
 ## Bibliografy
-	[embedded jetty documentation] (https://www.eclipse.org/jetty/documentation/9.3.x/embedded-examples.html)
-	[Rest service with jetty and jersey] (https://www.acando.no/thedailypassion/200555/a-rest-service-with-jetty-and-jersey)
-	[Rest service with jetty] (http://jlunaquiroga.blogspot.it/2014/01/restful-web-services-with-jetty-and.html)
-	[Spring migration from xml to java] (http://www.robinhowlett.com/blog/2013/02/13/spring-app-migration-from-xml-to-java-based-config/)
+- [Embedded jetty documentation](https://www.eclipse.org/jetty/documentation/9.3.x/embedded-examples.html)
+- [Rest service with jetty and jersey](https://www.acando.no/thedailypassion/200555/a-rest-service-with-jetty-and-jersey)
+- [Rest service with jetty](http://jlunaquiroga.blogspot.it/2014/01/restful-web-services-with-jetty-and.html)
+- [Spring migration from xml to java](http://www.robinhowlett.com/blog/2013/02/13/spring-app-migration-from-xml-to-java-based-config/)
