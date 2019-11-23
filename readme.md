@@ -9,8 +9,8 @@
 
 ### 1) The challenge
 
-Develop a simple "Connect-4" game web service running either as a WAR in jetty or
-as an embedded-jetty application, which is able to start a game session, take player
+Develop a simple **Connect-4** game web service running either as a `WAR` in `jetty` or
+as an `embedded-jetty` application, which is able to start a game session, take player
 input, keep the state of the game and forward the correct response to the requesting
 party.
 
@@ -26,7 +26,7 @@ See [canvas](https://github.com/ermalaliraj/canvas/) for more details on the gam
 
 ### 2) Application overview
 
-From a high level we can see the application subdivided in 4 "components":
+From a high level we can see the application subdivided in 4 _components_:
 
 1. Game Implementation 
     * Classes inside `canvas package`. <br>
@@ -34,13 +34,13 @@ From a high level we can see the application subdivided in 4 "components":
 2. Business Logic Layer
 	* Data Access
 	    * `H2` database, `EntityManager` and the `DAO package` for accessing the data to the `DB`.<br> 
-	    In this layer we convert `Enitity` objects to `DTOs` so the application in the higher layers can speak only __DTO language__.
+	    In this layer we convert `Enitity` objects to `DTOs` so the application in the higher layers can speak only _DTO language_.
 	* Service layer
 	    * The layer which first handles game logic (using canvas package) then handles 
 	the persistence of data in the DB (using dao package). <br>
 	This is the transactional layer. Transactions are configured in the file `spring-context.xml` using AOP.
 3. WebService / REST Layer. 
-    * The classes responsible for exposing the code as  RESTFul WebService. We decided to reply XML message.
+    * The classes responsible for exposing the code as `RESTFul WebService`. We decided to reply XML message.
 4. Api
     * `Requests/Responses/DTOs` to reply to the caller.
 
