@@ -16,23 +16,33 @@ party.
 
 #### Canvas Game
 The program should support the following commands:
-C w h Should create a new canvas of width w and height h.
-L x1 y1 x2 y2 Should create a new line from (x1,y1) to (x2,y2). Currently only horizontal or vertical lines are supported. Horizontal and vertical lines will be drawn using the 'x' character.
-R x1 y1 x2 y2 Should create a new rectangle, whose upper left corner is (x1,y1) and lower right corner is (x2,y2). Horizontal and vertical lines will be drawn using the 'x' character.
-B x y c Should fill the entire area connected to (x,y) with "colour" c. The behaviour of this is the same as that of the "bucket fill" tool in paint programs.
+- __C w h__ Should create a new canvas of width w and height h.
+- __L x1 y1 x2 y2__ Should create a new line from _(x1,y1)_ to _(x2,y2)_. Currently only horizontal or vertical lines are supported. Horizontal and vertical lines will be drawn using the 'x' character.
+- __R x1 y1 x2 y2__ Should create a new rectangle, whose upper left corner is _(x1,y1)_ and lower right corner is _(x2,y2)_. Horizontal and vertical lines will be drawn using the 'x' character.
+- __B x y c__ Should fill the entire area connected to (x,y) with "colour" c. The behaviour of this is the same as that of the "bucket fill" tool in paint programs.
+- __Q__ Should quit the program.
 
+See [canvas](https://github.com/ermalaliraj/canvas/) for more details on the game.
 
 ### 2) Application overview
 
 From a high level we can see the application subdivided in 4 "components":
 
-1. The Game Implementation - Classes inside canvas package. Almost didn't touch the actual implementation of the game. So we need to convert InputDTOs to CommandCanvas for calling the Canvas.
+1. Game Implementation 
+    * Classes inside `canvas package`. <br>
+    Same implementation of the original game. So we need to convert `InputDTOs` to `CommandCanvas` for calling the `Canvas`.
 2. Business Logic Layer
-	2.a. Data Access. H2 database, EntityManager and the DAO package for accessing the data to the DB. In this layer we convert Enity objects to DTOs so the application in the higher layers can speak only "DTO language".
-	2.b. Service layer. The layer which first handles game logic (using canvas package) then handles 
-	the persistence of data in the DB (using dao package). This is the transactional layer. Transactions are configured in the file spring-context.xml using AOP.
-3. WebService / REST Layer. The classes responsible for exposing the code as  RESTFul WebService. We decided to reply XML message.
-4. Api of the application. Requests/Responses/DTOs to reply to the caller.
+	* Data Access
+	    * `H2` database, `EntityManager` and the `DAO package` for accessing the data to the `DB`.<br> 
+	    In this layer we convert `Enitity` objects to `DTOs` so the application in the higher layers can speak only __DTO language__.
+	* Service layer
+	    * The layer which first handles game logic (using canvas package) then handles 
+	the persistence of data in the DB (using dao package). <br>
+	This is the transactional layer. Transactions are configured in the file `spring-context.xml` using AOP.
+3. WebService / REST Layer. 
+    * The classes responsible for exposing the code as  RESTFul WebService. We decided to reply XML message.
+4. Api
+    * `Requests/Responses/DTOs` to reply to the caller.
 
 
 ### 3) Source Packages
