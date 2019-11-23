@@ -49,26 +49,26 @@ From a high level we can see the application subdivided in 4 "components":
 
 The application is composed by the following packages:
 
-com.ea.connect4.api  - API of the application. Here we have all the DTOs to communicate with the caller.      
-com.ea.connect4.canvas.cmd  - Commands of the game
-com.ea.connect4.canvas.core - Implementation fo the game
-com.ea.connect4.canvas.exception - Exceptions of the game
-com.ea.connect4.canvas.util      - Utilities used for the game
-com.ea.connect4.dao      - Dao interface
-com.ea.connect4.dao.impl - DAO implementation. If we change DB, this is the only class we have to change.
-com.ea.connect4.entity   - Entities to persist in DB
-com.ea.connect4.service  - Service interface
-com.ea.connect4.service.impl - Service implementation
-com.ea.connect4.ws - Jetty Server
-com.ea.connect4.ws.rest - Requests handler classes
+- `com.ea.connect4.api`  - API of the application. Here we have all the DTOs to communicate with the caller.      
+- `com.ea.connect4.canvas.cmd`  - Commands of the game
+- `com.ea.connect4.canvas.core` - Implementation fo the game
+- `com.ea.connect4.canvas.exception` - Exceptions of the game
+- `com.ea.connect4.canvas.util`      - Utilities used for the game
+- `com.ea.connect4.dao`       - Dao interface
+- `com.ea.connect4.dao.impl` - DAO implementation. If we change DB, this is the only class we have to change.
+- `com.ea.connect4.entity`   - Entities to persist in DB
+- `com.ea.connect4.service`  - Service interface
+- `com.ea.connect4.service.impl` - Service implementation
+- `com.ea.connect4.ws` - Jetty Server
+- `com.ea.connect4.ws.rest` - Requests handler classes
 	
 
 Enhancements
-1.Exception 
-	1.a. Enrich Connect4 Application exceptions and identify the exceptions that application must rollback when occour. In service layer actually all the operations go in commit since CanvasExcpetion extends RuntimeException and is not set to rollback.
-	1.b. Enrich RESTFullException in order to reply to the caller all stacktrace
-2.CurrentSession 
-	2.a. Actually current session is simulated calling the application with the same user (can be session id or anything to identify a session) In a real application I would use spring-security and authentication for a user to log-in and then use the application.
+1. Exception 
+    * Enrich Connect4 `Application exceptions` and identify the exceptions that application must rollback when occur. In service layer actually all the operations go in commit since `CanvasExcpetion extends RuntimeException` and is not set to `rollback`.
+	* Enrich `RESTFullException` in order to reply to the caller all stacktrace
+2. CurrentSession 
+	* Actually current session is simulated calling the application with the same user (can be session id or anything to identify a session) In a real application I would use `spring-security` and authentication for a user to log-in and then use the application.
 
 
 ### 4) Test packages
@@ -76,14 +76,14 @@ Enhancements
 Used junit for testing Canvas Service. "TDD" approach was followed for the implementation, 
 so unit tests were not created at the end but during all the development phase.
 For each functionality of the service is present a different file in the package com.ea.connect4.be.service:
-- CommandBucketFillTest.java -> Test cases for BucketFiller command.
-- CommandLineTest.java -> Test cases for drawing a line command.
-- CommandRectangleTest.java -> Test cases for drawing a rectangle command.
+- `CommandBucketFillTest.java` -> Test cases for BucketFiller command.
+- `CommandLineTest.java` -> Test cases for drawing a line command.
+- `CommandRectangleTest.java` -> Test cases for drawing a rectangle command.
 
 Unit tests are divided in three categories:
-- Happy Paths, testHP_nomeTest wich are the tests that have to succeed. Usually we assert at the end of the method what we are expecting.
-- Case Limit, testCL_nomeTest wich are the tests that test a Limit Case. Example, x, y are 0 or same as width/height.  Usually we assert what we are expecting or pay attention of eventual exceptions.
-- Exceptions  - testEX_nomeTest wich are the tests that test exception cases. In this case we define the exception we are waiting to be thrown.
+- `Happy Paths`, `testHP_nomeTest` which are the tests that have to succeed. Usually we assert at the end of the method what we are expecting.
+- `Case Limit`, `testCL_nomeTest` which are the tests that test a Limit Case. Example, x, y are 0 or same as width/height.  Usually we assert what we are expecting or pay attention of eventual exceptions.
+- `Exceptions`  - `testEX_nomeTest` which are the tests that test exception cases. In this case we define the exception we are waiting to be thrown.
 
 Inside soapui folder there is a soapui project with the rest calls to test the application.
 	
@@ -91,7 +91,8 @@ Inside soapui folder there is a soapui project with the rest calls to test the a
 ### 5) Test the application
 
 Run the class JettyServer.java which creates a server listening in the port 1009.
-The application is ready to be tested using the following requests (for each functionality): <br/>
+The application is ready to be tested using the following requests (for each functionality):
+```
 	http://localhost:1009/connect4/new/0001/6/4
 	http://localhost:1009/connect4/line/0001/1/1/5/1
 	http://localhost:1009/connect4/rectangle/0001/2/3/5/4
@@ -101,18 +102,18 @@ The application is ready to be tested using the following requests (for each fun
 	http://localhost:1009/connect4/getCanvasByUser/0001
 	http://localhost:1009/connect4/deleteCanvasByUser/0001
 	http://localhost:1est the application009/connect4/ping 
+```
+If you want to test all the calls with a single click use the class `RESTClientTest.java` which calls programmatically the server.
 
-If you want to test all the calls with a single click use the class RESTClientTest.java which calls programatically the server.
-
-For test scope, all restful methods have changed to @GET, so in this case the functionalities are testable even from the browser.
-In a real application the insertion methods(new, line, rectangle, fill) would be @PUT (or @POST in case of form submission) and the deleteCanvasByUser will be @DELETE.
+For test scope, all restful methods have changed to `@GET`, so in this case the functionalities are testable even from the browser.
+In a real application the insertion methods(new, line, rectangle, fill) would be `@PUT` (or `@POST` in case of form submission) and the `deleteCanvasByUser` will be `@DELETE`.
 	
 ### 6) Timing
 
 Total time spend for the release 20 hours subdivided as follows:
-	8 hours springcontext/h2/dao/service/junit  (3+3+2)
-	8 hours JettyServer Spring/RESTFull + test/soapui (2+4+2)
-	4 hours Overview/documentation/repository
+- 8 hours springcontext/h2/dao/service/junit  (3+3+2)
+- 8 hours JettyServer Spring/RESTFull + test/soapui (2+4+2)
+- 4 hours Overview/documentation/repository
 	
 	
 	
