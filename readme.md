@@ -1,15 +1,11 @@
-## Web version of the [canvas standalone game](https://github.com/ermalaliraj/canvas/readme.md) 
+## Web version of the [canvas standalone game](https://github.com/ermalaliraj/canvas/) 
 
-
-
-### Index
-1.	Specific
+1.	The challenge
 2.	Application overview
 4.	Source packages
 5.	Test packages
 5.	Test the application
 6.	Timing
-
 
 ### 1) The challenge
 
@@ -18,7 +14,7 @@ as an embedded-jetty application, which is able to start a game session, take pl
 input, keep the state of the game and forward the correct response to the requesting
 party.
 
-Canvas Game
+#### Canvas Game
 The program should support the following commands:
 C w h Should create a new canvas of width w and height h.
 L x1 y1 x2 y2 Should create a new line from (x1,y1) to (x2,y2). Currently only horizontal or vertical lines are supported. Horizontal and vertical lines will be drawn using the 'x' character.
@@ -85,7 +81,7 @@ Inside soapui folder there is a soapui project with the rest calls to test the a
 ### 5) Test the application
 
 Run the class JettyServer.java which creates a server listening in the port 1009.
-The application is ready to be tested using the following requests (for each functionality):
+The application is ready to be tested using the following requests (for each functionality): <br/>
 	http://localhost:1009/connect4/new/0001/6/4
 	http://localhost:1009/connect4/line/0001/1/1/5/1
 	http://localhost:1009/connect4/rectangle/0001/2/3/5/4
@@ -94,7 +90,7 @@ The application is ready to be tested using the following requests (for each fun
 	http://localhost:1009/connect4/getAllCanvas
 	http://localhost:1009/connect4/getCanvasByUser/0001
 	http://localhost:1009/connect4/deleteCanvasByUser/0001
-	http://localhost:1009/connect4/ping 
+	http://localhost:1est the application009/connect4/ping 
 
 If you want to test all the calls with a single click use the class RESTClientTest.java which calls programatically the server.
 
