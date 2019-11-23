@@ -29,16 +29,13 @@ See [canvas](https://github.com/ermalaliraj/canvas/) for more details on the gam
 From a high level we can see the application subdivided in 4 _components_:
 
 1. Game Implementation 
-    * Classes inside `canvas package`. <br>
-    Same implementation of the original game. So we need to convert `InputDTOs` to `CommandCanvas` for calling the `Canvas`.
+    * Classes inside `canvas package`. Same implementation of the original game. So we need to convert `InputDTOs` to `CommandCanvas` for calling the `Canvas`.
 2. Business Logic Layer
 	* Data Access
-	    * `H2` database, `EntityManager` and the `DAO package` for accessing the data to the `DB`.<br> 
-	    In this layer we convert `Enitity` objects to `DTOs` so the application in the higher layers can speak only _DTO language_.
+	    * `H2` database, `EntityManager` and the `DAO package` for accessing the data to the `DB`. In this layer we convert `Enitity` objects to `DTOs` so the application in the higher layers can speak only _DTO language_.
 	* Service layer
 	    * The layer which first handles game logic (using canvas package) then handles 
-	the persistence of data in the DB (using dao package). <br>
-	This is the transactional layer. Transactions are configured in the file `spring-context.xml` using AOP.
+	the persistence of data in the DB (using dao package). This is the transactional layer. Transactions are configured in the file `spring-context.xml` using AOP.
 3. WebService / REST Layer. 
     * The classes responsible for exposing the code as `RESTFul WebService`. We decided to reply XML message.
 4. Api
@@ -65,7 +62,7 @@ The application is composed by the following packages:
 
 Enhancements
 1. Exception 
-    * Enrich Connect4 `Application exceptions` and identify the exceptions that application must rollback when occur. In service layer actually all the operations go in commit since `CanvasExcpetion extends RuntimeException` and is not set to `rollback`.
+    * Enrich _Connect4_ `Application exceptions` and identify the exceptions that application must rollback when occur. In service layer actually all the operations go in commit since `CanvasExcpetion extends RuntimeException` and is not set to `rollback`.
 	* Enrich `RESTFullException` in order to reply to the caller all stacktrace
 2. CurrentSession 
 	* Actually current session is simulated calling the application with the same user (can be session id or anything to identify a session) In a real application I would use `spring-security` and authentication for a user to log-in and then use the application.
@@ -75,7 +72,7 @@ Enhancements
 
 Used junit for testing Canvas Service. "TDD" approach was followed for the implementation, 
 so unit tests were not created at the end but during all the development phase.
-For each functionality of the service is present a different file in the package com.ea.connect4.be.service:
+For each functionality of the service is present a different file in the package `com.ea.connect4.be.service`:
 - `CommandBucketFillTest.java` -> Test cases for BucketFiller command.
 - `CommandLineTest.java` -> Test cases for drawing a line command.
 - `CommandRectangleTest.java` -> Test cases for drawing a rectangle command.
