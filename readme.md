@@ -70,7 +70,7 @@ Enhancements
 
 ### 4) Test packages
 
-Used junit for testing Canvas Service. "TDD" approach was followed for the implementation, 
+Used junit for testing Canvas Service. _TDD approach_ was followed for the implementation, 
 so unit tests were not created at the end but during all the development phase.
 For each functionality of the service is present a different file in the package `com.ea.connect4.be.service`:
 - `CommandBucketFillTest.java` -> Test cases for BucketFiller command.
@@ -87,7 +87,7 @@ Inside soapui folder there is a soapui project with the rest calls to test the a
 	
 ### 5) Test the application
 
-Run the class JettyServer.java which creates a server listening in the port 1009.
+Run the class `JettyServer.java` which creates a server listening in the port `1009`.
 The application is ready to be tested using the following requests (for each functionality):
 ```
 	http://localhost:1009/connect4/new/0001/6/4
@@ -116,7 +116,7 @@ Total time spend for the release 20 hours subdivided as follows:
 	
 	
 ## Bibliografy
-	https://www.eclipse.org/jetty/documentation/9.3.x/embedded-examples.html
-	https://www.acando.no/thedailypassion/200555/a-rest-service-with-jetty-and-jersey
-	http://jlunaquiroga.blogspot.it/2014/01/restful-web-services-with-jetty-and.html
-	http://www.robinhowlett.com/blog/2013/02/13/spring-app-migration-from-xml-to-java-based-config/
+	[embedded jetty documentation] (https://www.eclipse.org/jetty/documentation/9.3.x/embedded-examples.html)
+	[Rest service with jetty and jersey] (https://www.acando.no/thedailypassion/200555/a-rest-service-with-jetty-and-jersey)
+	[Rest service with jetty] (http://jlunaquiroga.blogspot.it/2014/01/restful-web-services-with-jetty-and.html)
+	[Spring migration from xml to java] (http://www.robinhowlett.com/blog/2013/02/13/spring-app-migration-from-xml-to-java-based-config/)
